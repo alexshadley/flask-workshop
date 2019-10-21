@@ -1,10 +1,12 @@
 from flask import Flask, render_template
+from trivia import get_questions
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Hello World'
+    questions = get_questions(5)
+    return render_template("quiz.html", questions=questions)
 
 
 @app.route('/greet/<name>')
