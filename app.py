@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -9,7 +9,7 @@ def index():
 
 @app.route('/greet/<name>')
 def greet(name):
-    return '<h1>Welcome to the greeter.</h1><p>Consider yourself greeted, ' + name + '</p>'
+    return render_template("greet.html", user_name=name)
 
 if __name__ == '__main__':
     app.run()
