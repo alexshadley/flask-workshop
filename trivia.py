@@ -8,14 +8,14 @@ QUESTION_TYPE = 'multiple'
 class Question:
     def __init__(self, text, correct_answer, wrong_answers):
         self.text = text
-        self.correct_answer = correct_answer
-        self.wrong_answers = wrong_answers 
+        self.answers = [{'text': a, 'correct': False} for a in wrong_answers]
+        self.answers.append({'text': correct_answer, 'correct': True})
     
     def __repr__(self):
-        return f'{self.text}\ncorrect: {self.correct_answer}\n'
+        return f'{self.text}\n'
     
     def scramble_answers(self):
-        answers = [self.correct_answer] + self.wrong_answers
+        answers = list(self.answers)
         random.shuffle(answers)
         return answers
 
