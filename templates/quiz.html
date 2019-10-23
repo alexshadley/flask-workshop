@@ -6,10 +6,12 @@
         <h1>Welcome to the CS Quiz!</h1>
         <form action="/" method="POST">
             {% for question in questions %}
-                <label>{{question.text}}</label>
-                {% for answer in question.scramble_answers() %}
-
-                {% endfor %}
+                <div>
+                    <label for="q{{loop.index}}">{{question.text}}</label>
+                    {% for answer in question.scramble_answers() %}
+                        <input type="radio" id="{{'wrong' if question.answer}}" name="q{{loop.index}}" 
+                    {% endfor %}
+                </div>
             {% endfor %}
         </form>
     </body>
