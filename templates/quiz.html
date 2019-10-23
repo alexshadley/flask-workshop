@@ -4,8 +4,13 @@
     </head>
     <body>
         <h1>Welcome to the CS Quiz!</h1>
-        {% for question in questions %}
-            <h3>{{question.text}}</h3>
-        {% endfor %}
+        <form action="/" method="POST">
+            {% for question in questions %}
+                <label>{{question.text}}</label>
+                {% for answer in question.scramble_answers() %}
+
+                {% endfor %}
+            {% endfor %}
+        </form>
     </body>
 </html>
