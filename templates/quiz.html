@@ -7,9 +7,10 @@
         <form action="/" method="POST">
             {% for question in questions %}
                 <div>
-                    <label for="q{{loop.index}}">{{question.text}}</label>
+                    <p>{{question.text}}</p>
                     {% for answer in question.scramble_answers() %}
-                        <input type="radio" id="{{'wrong' if question.answer}}" name="q{{loop.index}}" 
+                        <label for="{{question.id}}">{{answer.text}}</label>
+                        <input type="radio" id="{{answer.text}}" name="{{question.id}}" value="{{answer.correct}}">
                     {% endfor %}
                 </div>
             {% endfor %}

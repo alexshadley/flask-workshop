@@ -5,11 +5,16 @@ API_URL = "https://opentdb.com/api.php"
 QUESTION_CATEGORY = 18
 QUESTION_TYPE = 'multiple'
 
+class Answer:
+    def __init__(self, text, correct):
+        self.text = text
+        self.correct = correct
+
 class Question:
     def __init__(self, text, correct_answer, wrong_answers):
         self.text = text
-        self.answers = [{'text': a, 'correct': False} for a in wrong_answers]
-        self.answers.append({'text': correct_answer, 'correct': True})
+        self.answers = [Answer(a, False) for a in wrong_answers]
+        self.answers.append(Answer(correct_answer, True))
     
     def __repr__(self):
         return f'{self.text}\n'

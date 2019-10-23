@@ -6,6 +6,10 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     questions = get_questions(5)
+
+    for i, q in enumerate(questions):
+        q.id = i
+
     return render_template("quiz.html", questions=questions)
 
 
